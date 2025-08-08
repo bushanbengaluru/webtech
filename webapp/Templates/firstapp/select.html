@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block main%}
+    <h1>Employee Details</h1>
+    <form action="{%url 'selecturl' %}" method="post">
+        {% csrf_token %}
+        <label for="">
+            Min: <input type="text" name="minsal" placeholder="Enter minimum salary"><br>
+            Max: <input type="text" name="maxsal" placeholder="Enter maximum salary"><br>
+            <input type="submit" value="Filter">
+        </label><br>
+        <!-- <input type="Search" name="search" value="{{ search }}" placeholder="Search by name"> -->
+        </form>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Employee Salary</th>
+            <th colspan="2">Action</th>
+        </tr>
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp.eid }}</td>
+            <td>{{ emp.ename }}</td>  
+            <td>{{ emp.esal }} </td>
+            <td><a href="{%url 'employeeurl' emp.eid%}">Update</a></td>
+            <td><a href="{%url 'deleteurl' emp.eid%}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    {%endblock%}

@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{%block main%}
+    <h1>Update Employee Details</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="">
+            Employee ID:
+            <input type="text" name="eid" value="{{employees.eid}}">
+        </label><br><br>
+        <label for="">
+            Employee Name:
+            <input type="text" name="ename" value="{{employees.ename}}">
+        </label><br><br>
+        <label for="">
+            Employee Salary:
+            <input type="text" name="esal" value="{{employees.esal}}">
+        </label><br><br>
+        <input type="submit" value="update">
+    </form>
+{%endblock%}

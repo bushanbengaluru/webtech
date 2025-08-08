@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block main %}
+    <h1>Login Page</h1>
+    <form action="{% url 'loginurl' %}" method="post">
+        {% csrf_token %}
+        <label for="">
+            username:
+            <input type="text" name="username" placeholder="Enter your username">
+        </label><br><br>
+        <label for="">
+            password:
+            <input type="password" name="password" placeholder="Enter your password">   
+        </label>
+        <input type="submit" value="Login">
+    <a href="{% url 'signurl' %}">Sign Up</a>
+    <br>
+    {% for msg in messages %}
+        <p>{{ msg }}</p>
+    {% endfor %}
+{% endblock %}
